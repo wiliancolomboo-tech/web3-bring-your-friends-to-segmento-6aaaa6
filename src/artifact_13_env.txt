@@ -1,0 +1,5 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+PROGRAM_ID=SegmXz6T257qJp6q8d9M14VqFm3k8KqF4N3d9T8wXyz
+ORACLE_PRIVATE_KEY_JSON=/path/to/oracle-keypair.json
+RESEND_API_KEY=re_123456789abcdef
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/T00/B00/XXXXX

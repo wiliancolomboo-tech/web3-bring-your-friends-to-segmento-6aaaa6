@@ -1,0 +1,38 @@
+flowchart TD
+    subgraph Client & Frontend ["User & Client Layer"]
+        Ref["Referrer (Alice)"]
+        NewU["Referred Friend (Bob)"]
+        UI["Segmento Web3 App"]
+    end
+
+    subgraph OffChainEngine ["Segmento Attestation & Enterprise Mesh"]
+        Oracle["Segmento Qualification Engine / Signer"]
+        Worker["Segmento Event Daemon / Worker"]
+        ResendAPI["Resend Email API"]
+        SlackAPI["Slack / Discord Webhooks"]
+        SegmentoAPI["Segmento Analytics Ingestion"]
+    end
+
+    subgraph SolanaCluster ["Solana On-Chain Program (Anchor)"]
+        CampaignPDA[("Campaign Config PDA\n[seeds: 'campaign', campaign_id]")]
+        VaultPDA[("Reward Vault PDA\n[seeds: 'vault', campaign_id]")]
+        ReferrerPDA[("Referrer Profile PDA\n[seeds: 'referrer', campaign_id, alice_pubkey]")]
+        ReferralLinkPDA[("Referral Link PDA\n[seeds: 'link', campaign_id, bob_pubkey]")]
+    end
+
+    %% Flow steps
+    Ref -->|"1. Generate Invite Link"| UI
+    NewU -->|"2. Connect Wallet & Transact"| UI
+    UI -->|"3. Request Proof of Qualification"| Oracle
+    Oracle -->|"4. Inspect Wallet Behavioral History\n& Sign Ed25519 Voucher"| UI
+    UI -->|"5. Execute claim_referral(voucher, sig)"| ReferralLinkPDA
+    
+    ReferralLinkPDA -->|"6. Verify Signature & Non-Self Referral"| CampaignPDA
+    CampaignPDA -->|"7. Increment Counter & Update Tier"| ReferrerPDA
+    ReferrerPDA -->|"8. Disburse Instant Reward SPL / SOL"| VaultPDA
+    VaultPDA -->|"9. Transfer Tokens"| Ref
+
+    SolanaCluster -.->|"10. Stream Confirmed Transaction Logs"| Worker
+    Worker -->|"11. Sync Cohort"| SegmentoAPI
+    Worker -->|"12. Send Email Notification"| ResendAPI
+    Worker -->|"13. Push Growth Alert"| SlackAPI
