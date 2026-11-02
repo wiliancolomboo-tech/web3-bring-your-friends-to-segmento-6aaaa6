@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  segmento-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SOLANA_WS_URL=wss://api.devnet.solana.com
+      - PROGRAM_ID=SegmXq4bNhyhXw62xVRtC3n2qZq3vBkW9q8YqPZ1111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - RESEND_SENDER_EMAIL=invite@segmento.io
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

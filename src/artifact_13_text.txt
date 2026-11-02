@@ -1,0 +1,6 @@
+How it works under the hood:
+⚡ Compact Anchor PDAs track referrer graphs & milestone thresholds
+🛡️ Anti-Sybil validation gates reward escrow release until real on-chain volume is verified
+📨 Enterprise webhook daemon connects directly to @resend & Slack/Discord for instant growth telemetry
+
+No off-chain spreadsheets. Transparent viral loops.

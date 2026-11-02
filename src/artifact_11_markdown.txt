@@ -1,0 +1,18 @@
+🧵 1/3
+Thrilled to introduce "Bring Your Friends to Segmento" — the next-generation on-chain referral & audience attribution engine natively engineered on @solana! 🚀
+
+Say goodbye to opaque web2 referral databases and Sybil drain. Verifiable, zero-latency growth is here. 👇
+
+🧵 2/3
+Under the hood of the @Segmento protocol:
+⚡️ Sub-second Anchor PDAs binding referrers and friends deterministically
+🛡️ Cryptographic anti-self-referral & anti-sybil guardrails
+💰 Automated dual-distribution vaults (referrer reward + friend welcome bonus)
+📬 Enterprise Resend & Webhook listener for real-time celebration loops
+
+🧵 3/3
+The protocol is 100% open-source, fully tested with 100% assertions passing, Dockerized, and ready for turnkey deployment on Mainnet-Beta.
+
+Bring your friends to the Solana frontier with verifiable analytics on @Segmento!
+
+GitHub & Live Architecture: https://github.com/segmento-growth/bring-your-friends-protocol #Solana #Segmento #Web3Growth

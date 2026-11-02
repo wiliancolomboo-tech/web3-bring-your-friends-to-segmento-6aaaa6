@@ -1,0 +1,5 @@
+Growth attribution on @Solana shouldn't be a black box or a Sybil-farmed nightmare. 
+
+Introducing "Bring Your Friends to @Segmento" — a 100% on-chain, verifiable referral & audience attribution engine.
+
+Deterministic PDAs. Verifiable qualification. Zero fake invites. 🧵👇

@@ -1,0 +1,9 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_WS_URL=wss://api.devnet.solana.com
+PROGRAM_ID=SegmVoGzZ9qWkmQ1bVdC6yW8zZ3vG5NfK2k8xYmPpump
+OPERATOR_PRIVATE_KEY=38b7A...paste_base58_private_key_here...
+RESEND_API_KEY=re_1234567890abcdef
+RESEND_FROM_EMAIL=growth@segmento.network
+DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+PORT=8080

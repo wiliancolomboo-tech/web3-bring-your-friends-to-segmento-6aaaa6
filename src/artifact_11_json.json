@@ -1,0 +1,8 @@
+{
+  "status": "healthy",
+  "uptime_seconds": 84210,
+  "solana_slot_height": 284102930,
+  "processed_events": 1420,
+  "resend_pipeline": "connected",
+  "memory_rss_mb": 42.15
+}

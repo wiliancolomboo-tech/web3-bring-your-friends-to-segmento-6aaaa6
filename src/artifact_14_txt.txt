@@ -1,0 +1,5 @@
+How SRAP brings your friends to @Segmento_io with zero trust leaks:
+
+1️⃣ Dynamic PDA Binds: 1:1 referee mapping prevents loops & self-referral attacks.
+2️⃣ Activity Milestones: Incentivize real volume, swaps, and retention — not just clicks.
+3️⃣ Enterprise Webhook Stack: Connects Anchor logs directly to Resend email & Discord ops in real time! (2/3)

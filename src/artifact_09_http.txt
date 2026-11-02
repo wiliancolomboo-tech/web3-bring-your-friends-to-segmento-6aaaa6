@@ -1,0 +1,13 @@
+GET /healthz HTTP/1.1
+Host: localhost:8080
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "status": "HEALTHY",
+  "programId": "SegBYF1111111111111111111111111111111111111",
+  "connectedWsPeers": 1,
+  "lastProcessedSlot": 302194812,
+  "queueLatencyMs": 14
+}

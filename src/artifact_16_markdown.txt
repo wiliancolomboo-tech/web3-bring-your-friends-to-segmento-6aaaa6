@@ -1,0 +1,27 @@
+🧵 1/3
+Thrilled to unveil "Bring Your Friends to Segmento" 🌐⚡️
+
+We engineered an on-chain, cohort-segmented referral & growth engine built directly on @solana with @AnchorLang! 
+
+Zero bot leakage. Provable Sybil resistance. Native programmatic SPL reward splits. 🚀
+
+#Solana #Segmento #Web3Growth
+
+---
+
+🧵 2/3
+How it works:
+1️⃣ Referrers initialize PDA-governed affiliate profiles with custom split ratios.
+2️⃣ Friends bind seamlessly with 1-click on-chain attestation.
+3️⃣ Milestone activations auto-release escrow bounties + stream live webhook alerts & @resend emails to CRM pipelines.
+
+Complete transparency. Real retention. 📊💎
+
+---
+
+🧵 3/3
+Enterprise-ready with turnkey Docker orchestration, real-time WebSocket daemon, and 100% test suite passing.
+
+Bring your friends, build your cohort, and scale decentralized growth on Solana with Segmento!
+
+Check out the full open-source codebase & deployment runbook: https://github.com/segmento/bring-your-friends 🛠️🔥

@@ -1,0 +1,18 @@
+1/3 🚀 Introducing "Bring Your Friends to Segmento" — the high-throughput, on-chain referral & audience cohort protocol engineered natively on @Solana!
+
+Traditional Web3 growth hacks are plagued by bots and opaque attribution. We fixed this at the base layer. 👇🧵
+
+2/3 ⚡ Under the Hood:
+• Deterministic PDA-based multi-tier referral trees
+• Mathematical Sybil-resistance with volume milestones
+• Non-custodial SPL reward vaults with sub-second settlement
+• Enterprise sync to Resend emails & Discord/Slack alerts
+
+Built for scale. Zero downtime.
+
+3/3 🏆 Turnkey ready for @Segmento:
+Complete Anchor smart contract, 100% test coverage, dynamic cohort classification, and a 1-click Docker orchestration stack. 
+
+Attribution solved. Turn your community into a viral growth engine. 🌐🔥
+
+#Solana #Segmento #Web3Growth #Anchor #DeFi

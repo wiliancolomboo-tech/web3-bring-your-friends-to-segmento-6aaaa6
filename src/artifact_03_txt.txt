@@ -1,0 +1,23 @@
+[Solana Mainnet-Beta / Devnet]
+       │
+       ▼ (WSS: wss://api.mainnet-beta.solana.com)
+┌────────────────────────────────────────────────────────┐
+│           Segmento Integration Worker (Docker)         │
+│  ┌──────────────────────────────────────────────────┐  │
+│  │ Anchor Event Subscriber (PubSub on logsSubscribe) │  │
+│  └────────────────────────┬─────────────────────────┘  │
+│                           │ Raw Hex Logs               │
+│  ┌────────────────────────▼─────────────────────────┐  │
+│  │ Anchor Event Coder (Borsh Deserialization)       │  │
+│  └────────────────────────┬─────────────────────────┘  │
+│                           │ Deserialized Event JSON     │
+│  ┌────────────────────────▼─────────────────────────┐  │
+│  │ Resend Enterprise Dispatcher (TLS 1.3 / HTTPS)   │  │
+│  │ Discord / Slack Webhook Gateway (Rate-Limited)   │  │
+│  └──────────────────────────────────────────────────┘  │
+└───────────────────────────┬────────────────────────────┘
+                            │
+            ┌───────────────┴───────────────┐
+            ▼                               ▼
+   [Resend Mail Service]       [Discord/Slack Growth Ops]
+ (api.resend.com/emails)      (discord.com/api/webhooks/..)

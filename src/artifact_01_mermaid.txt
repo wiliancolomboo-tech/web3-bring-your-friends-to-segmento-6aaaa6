@@ -1,0 +1,47 @@
+flowchart TD
+    subgraph ClientLayer ["1. User & Client Interface"]
+        Referrer["Referrer (Alice)"]
+        Referee["Referee (Bob)"]
+        CLI["Segmento Growth CLI / Web DApp"]
+    end
+
+    subgraph SolanaOnChain ["2. Solana Blockchain (Segmento Referral Program)"]
+        Prog["Program ID: Segm...1111"]
+        ConfigPDA["Global Config PDA\n[b'config']"]
+        ReferralPDA["Alice Referral PDA\n[b'referral', Alice]"]
+        RefereeBindingPDA["Bob Binding PDA\n[b'binding', Bob]"]
+        EscrowVaultPDA["Reward Escrow Vault PDA\n[b'vault', Config]"]
+    end
+
+    subgraph OffChainDaemon ["3. Segmento Automation & Event Pipeline"]
+        WSListener["WebSocket Geyser/RPC Event Listener"]
+        Engine["Attribution & Metric Engine"]
+        Queue["Idempotent Transaction Queue"]
+    end
+
+    subgraph EnterpriseServices ["4. External Enterprise Integration"]
+        ResendAPI["Resend Email API\n(User Transactional Receipts)"]
+        DiscordHook["Discord Growth Ops Webhook\n(#segmento-growth-alerts)"]
+        SlackHook["Slack Executive Telemetry\n(#kpi-metrics)"]
+    end
+
+    Referrer -->|"1. Initialize Referral Campaign"| CLI
+    CLI -->|"init_referrer_vault()"| Prog
+    Prog -->|"Create PDA"| ReferralPDA
+
+    Referee -->|"2. Accept Invite & Bind Wallet"| CLI
+    CLI -->|"bind_referee(alice_pubkey)"| Prog
+    Prog -->|"Verify & Store"| RefereeBindingPDA
+    Prog -->|"Emit RefereeBoundEvent"| WSListener
+
+    Referee -->|"3. Execute Protocol Milestone Action"| CLI
+    CLI -->|"complete_milestone(milestone_id, reward_amount)"| Prog
+    Prog -->|"Verify Milestones & Transfer Funds"| EscrowVaultPDA
+    EscrowVaultPDA -->|"Disburse Commission"| Referrer
+    Prog -->|"Emit MilestoneCompletedEvent"| WSListener
+
+    WSListener --> Engine
+    Engine --> Queue
+    Queue -->|"Dispatch Verified Event"| ResendAPI
+    Queue -->|"Post Alert"| DiscordHook
+    Queue -->|"Post Metric"| SlackHook

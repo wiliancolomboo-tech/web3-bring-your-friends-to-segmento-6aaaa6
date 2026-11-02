@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  segmento-growth-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - PROGRAM_ID=SegmX2z6Vq4Gg8hP9Kx1tA3B8Wv7kQNmYj6c5R8uFD1
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+      - SOLANA_WS_URL=wss://api.mainnet-beta.solana.com
+      - DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+      - RESEND_API_KEY=re_your_api_key_here
+      - NOTIFICATION_SENDER=growth@segmento.network
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3

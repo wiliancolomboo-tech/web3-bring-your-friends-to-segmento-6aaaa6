@@ -1,0 +1,21 @@
+1/4 🚀 Announcing the Segmento Viral Referral Engine (SVRE): Bringing your friends to @Segmento has never been faster, permissionless, or more rewarding! 
+
+Built natively on @Solana, SVRE turns every user into a growth advocate with sub-second on-chain attribution & instant SPL payouts. 🌐⚡
+
+2/4 🛡️ Traditional Web3 referral programs suffer from sybil bots and delayed spreadsheets. 
+
+SVRE solves this with:
+✅ Anti-sybil PDA constraints (no self-referrals or cycles)
+✅ Deterministic dual-split escrow vaults
+✅ Real-time enterprise dispatch via @resend & Slack webhooks
+
+3/4 📈 On-chain attribution meets enterprise scale. In one slot (400ms):
+1. New user connects with a friend's referral link
+2. Rewards split atomically on Solana
+3. SVRE daemon streams audience segments directly into your growth stack.
+
+CAC slashed by 90%+.
+
+4/4 🛠️ Check out the open-source repo, Anchor tests, and turnkey Docker orchestration here: https://github.com/segmento/bring-your-friends-to-segmento
+
+Let's scale Solana together! @Segmento @Solana #Solana #Web3Growth #Bounty

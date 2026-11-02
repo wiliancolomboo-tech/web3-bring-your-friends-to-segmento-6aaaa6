@@ -1,98 +1,236 @@
-import axios from "axios";
-import { Resend } from "resend";
+import * as anchor from "@coral-xyz/anchor";
+import { Program } from "@coral-xyz/anchor";
+import { SegmentoReferral } from "../target/types/segmento_referral";
+import { PublicKey, Keypair, SystemProgram, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { expect } from "chai";
 
-export interface ReferralNotificationPayload {
-  campaignId: string;
-  referrer: string;
-  referredUser: string;
-  payoutRaw: number;
-  tier: string;
-  referralCount: number;
-  txSignature: string;
-  referrerEmail?: string;
-}
+describe("segmento-referral end-to-end lifecycle", () => {
+  const provider = anchor.AnchorProvider.env();
+  anchor.setProvider(provider);
 
-export class EnterpriseNotifier {
-  private resendClient?: Resend;
-  private slackWebhookUrl?: string;
+  const program = anchor.workspace.SegmentoReferral as Program<SegmentoReferral>;
 
-  constructor() {
-    if (process.env.RESEND_API_KEY) {
-      this.resendClient = new Resend(process.env.RESEND_API_KEY);
-    }
-    this.slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
-  }
+  const authority = (provider.wallet as any).payer as Keypair;
+  const aliceReferrer = Keypair.generate();
+  const bobReferee = Keypair.generate();
+  const charlieAttacker = Keypair.generate();
 
-  public async notifySlack(payload: ReferralNotificationPayload): Promise<void> {
-    if (!this.slackWebhookUrl) return;
+  let configPda: PublicKey;
+  let vaultPda: PublicKey;
+  let aliceReferralPda: PublicKey;
+  let bobBindingPda: PublicKey;
 
-    const slackBody = {
-      text: `🚀 *New Segmento Referral Converted!*`,
-      blocks: [
-        {
-          type: "header",
-          text: {
-            type: "plain_text",
-            text: "🎉 Segmento Growth: Friend Onboarded!",
-          },
-        },
-        {
-          type: "section",
-          fields: [
-            { type: "mrkdwn", text: `*Campaign:* \`${payload.campaignId}\`` },
-            { type: "mrkdwn", text: `*Payout:* \`${payload.payoutRaw} tokens\`` },
-            { type: "mrkdwn", text: `*Referrer:* \`${payload.referrer.slice(0, 6)}...${payload.referrer.slice(-4)}\`` },
-            { type: "mrkdwn", text: `*New Friend:* \`${payload.referredUser.slice(0, 6)}...${payload.referredUser.slice(-4)}\`` },
-            { type: "mrkdwn", text: `*New Tier Level:* *${payload.tier}*` },
-            { type: "mrkdwn", text: `*Total Referrals:* *${payload.referralCount}*` },
-          ],
-        },
-        {
-          type: "context",
-          elements: [
-            {
-              type: "mrkdwn",
-              text: `🔗 <https://solscan.io/tx/${payload.txSignature}?cluster=devnet|View on Solscan>`,
-            },
-          ],
-        },
-      ],
-    };
-
-    try {
-      await axios.post(this.slackWebhookUrl, slackBody, { timeout: 5000 });
-      console.log(`[Notifier] Slack alert dispatched for tx: ${payload.txSignature}`);
-    } catch (err: any) {
-      console.error("[Notifier] Failed to send Slack alert:", err?.message || err);
-    }
-  }
-
-  public async notifyResendEmail(payload: ReferralNotificationPayload): Promise<void> {
-    if (!this.resendClient || !payload.referrerEmail) return;
-
-    try {
-      await this.resendClient.emails.send({
-        from: "Segmento Growth <referrals@segmento.io>",
-        to: payload.referrerEmail,
-        subject: `Your friend joined Segmento! Reward disbursed: ${payload.payoutRaw} tokens`,
-        html: `
-          <div style="font-family: Arial, sans-serif; padding: 20px; color: #111;">
-            <h2>You earned a referral bonus on Segmento!</h2>
-            <p>Your friend <code>${payload.referredUser}</code> just completed verification and joined.</p>
-            <ul>
-              <li><strong>Reward:</strong> ${payload.payoutRaw} tokens transferred to your wallet</li>
-              <li><strong>Current Tier:</strong> ${payload.tier}</li>
-              <li><strong>Total Lifetime Friends Brought:</strong> ${payload.referralCount}</li>
-            </ul>
-            <p><a href="https://solscan.io/tx/${payload.txSignature}?cluster=devnet" style="color: #6366f1;">Inspect Transaction on Solscan</a></p>
-            <hr />
-            <small>Segmento Audience & Referral Protocol Engine</small>
-          </div>
-        `,
+  before(async () => {
+    // Airdrop SOL to test actors
+    for (const actor of [aliceReferrer, bobReferee, charlieAttacker]) {
+      const sig = await provider.connection.requestAirdrop(actor.publicKey, 5 * LAMPORTS_PER_SOL);
+      const latestBlockhash = await provider.connection.getLatestBlockhash();
+      await provider.connection.confirmTransaction({
+        signature: sig,
+        ...latestBlockhash,
       });
-      console.log(`[Notifier] Resend email dispatched to: ${payload.referrerEmail}`);
-    } catch (err: any) {
-      console.error("[Notifier] Resend email failed:", err?.message || err);
     }
-  }
-}
+
+    [configPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("segmento_config")],
+      program.programId
+    );
+
+    [vaultPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("escrow_vault"), configPda.toBuffer()],
+      program.programId
+    );
+
+    [aliceReferralPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("referral_state"), aliceReferrer.publicKey.toBuffer()],
+      program.programId
+    );
+
+    [bobBindingPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("referee_binding"), bobReferee.publicKey.toBuffer()],
+      program.programId
+    );
+  });
+
+  it("1. Successfully initializes the Segmento Global Config and Escrow Vault", async () => {
+    const basisPoints = 500; // 5%
+    const milestoneThreshold = new anchor.BN(1 * LAMPORTS_PER_SOL);
+
+    await program.methods
+      .initializeConfig(basisPoints, milestoneThreshold)
+      .accounts({
+        config: configPda,
+        escrow_vault: vaultPda,
+        authority: authority.publicKey,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([authority])
+      .rpc();
+
+    const configAccount = await program.account.globalConfig.fetch(configPda);
+    expect(configAccount.authority.toBase58()).to.equal(authority.publicKey.toBase58());
+    expect(configAccount.basisPointsCommission).to.equal(basisPoints);
+    expect(configAccount.milestoneThresholdLamports.toNumber()).to.equal(1 * LAMPORTS_PER_SOL);
+    expect(configAccount.totalRefereesOnboarded.toNumber()).to.equal(0);
+  });
+
+  it("2. Funds the Escrow Vault with protocol reward SOL", async () => {
+    const fundAmount = new anchor.BN(2 * LAMPORTS_PER_SOL);
+
+    await program.methods
+      .fundEscrowVault(fundAmount)
+      .accounts({
+        config: configPda,
+        escrow_vault: vaultPda,
+        funder: authority.publicKey,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([authority])
+      .rpc();
+
+    const vaultBalance = await provider.connection.getBalance(vaultPda);
+    expect(vaultBalance).to.be.at.least(2 * LAMPORTS_PER_SOL);
+  });
+
+  it("3. Registers Alice as a legitimate Segmento Referrer", async () => {
+    const campaignTag = "solana-global-2025";
+
+    await program.methods
+      .registerReferrer(campaignTag)
+      .accounts({
+        referralState: aliceReferralPda,
+        referrer: aliceReferrer.publicKey,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([aliceReferrer])
+      .rpc();
+
+    const aliceState = await program.account.referralAccount.fetch(aliceReferralPda);
+    expect(aliceState.referrer.toBase58()).to.equal(aliceReferrer.publicKey.toBase58());
+    expect(aliceState.campaignTag).to.equal(campaignTag);
+    expect(aliceState.totalReferrals.toNumber()).to.equal(0);
+    expect(aliceState.totalLamportsEarned.toNumber()).to.equal(0);
+  });
+
+  it("4. Prevents Self-Referral (Alice cannot refer Alice)", async () => {
+    const [aliceSelfBinding] = PublicKey.findProgramAddressSync(
+      [Buffer.from("referee_binding"), aliceReferrer.publicKey.toBuffer()],
+      program.programId
+    );
+
+    try {
+      await program.methods
+        .bindReferee()
+        .accounts({
+          config: configPda,
+          referralState: aliceReferralPda,
+          refereeBinding: aliceSelfBinding,
+          referee: aliceReferrer.publicKey,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([aliceReferrer])
+        .rpc();
+      expect.fail("Expected SelfReferralNotAllowed error was not thrown");
+    } catch (err: any) {
+      expect(err.error.errorCode.code).to.equal("SelfReferralNotAllowed");
+    }
+  });
+
+  it("5. Binds Bob as Alice's referee", async () => {
+    await program.methods
+      .bindReferee()
+      .accounts({
+        config: configPda,
+        referralState: aliceReferralPda,
+        refereeBinding: bobBindingPda,
+        referee: bobReferee.publicKey,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([bobReferee])
+      .rpc();
+
+    const binding = await program.account.refereeBindingAccount.fetch(bobBindingPda);
+    expect(binding.referee.toBase58()).to.equal(bobReferee.publicKey.toBase58());
+    expect(binding.referrer.toBase58()).to.equal(aliceReferrer.publicKey.toBase58());
+    expect(binding.milestoneCompleted).to.be.false;
+
+    const aliceState = await program.account.referralAccount.fetch(aliceReferralPda);
+    expect(aliceState.totalReferrals.toNumber()).to.equal(1);
+  });
+
+  it("6. Rejects Bob completing milestone with volume below threshold", async () => {
+    const subThresholdVolume = new anchor.BN(0.5 * LAMPORTS_PER_SOL);
+
+    try {
+      await program.methods
+        .completeMilestone(1, subThresholdVolume)
+        .accounts({
+          config: configPda,
+          escrowVault: vaultPda,
+          referralState: aliceReferralPda,
+          refereeBinding: bobBindingPda,
+          referrerWallet: aliceReferrer.publicKey,
+          referee: bobReferee.publicKey,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([bobReferee])
+        .rpc();
+      expect.fail("Expected InsufficientVolume error was not thrown");
+    } catch (err: any) {
+      expect(err.error.errorCode.code).to.equal("InsufficientVolume");
+    }
+  });
+
+  it("7. Successfully completes Bob milestone and disburses commission to Alice", async () => {
+    const actionVolume = new anchor.BN(1 * LAMPORTS_PER_SOL);
+    const expectedCommission = (1 * LAMPORTS_PER_SOL * 500) / 10000; // 0.05 SOL
+
+    const aliceBalanceBefore = await provider.connection.getBalance(aliceReferrer.publicKey);
+
+    await program.methods
+      .completeMilestone(1, actionVolume)
+      .accounts({
+        config: configPda,
+        escrowVault: vaultPda,
+        referralState: aliceReferralPda,
+        refereeBinding: bobBindingPda,
+        referrerWallet: aliceReferrer.publicKey,
+        referee: bobReferee.publicKey,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([bobReferee])
+      .rpc();
+
+    const aliceBalanceAfter = await provider.connection.getBalance(aliceReferrer.publicKey);
+    expect(aliceBalanceAfter - aliceBalanceBefore).to.equal(expectedCommission);
+
+    const binding = await program.account.refereeBindingAccount.fetch(bobBindingPda);
+    expect(binding.milestoneCompleted).to.be.true;
+
+    const aliceState = await program.account.referralAccount.fetch(aliceReferralPda);
+    expect(aliceState.totalLamportsEarned.toNumber()).to.equal(expectedCommission);
+  });
+
+  it("8. Prevents double-spending on duplicate milestone claim", async () => {
+    const actionVolume = new anchor.BN(1 * LAMPORTS_PER_SOL);
+
+    try {
+      await program.methods
+        .completeMilestone(1, actionVolume)
+        .accounts({
+          config: configPda,
+          escrowVault: vaultPda,
+          referralState: aliceReferralPda,
+          refereeBinding: bobBindingPda,
+          referrerWallet: aliceReferrer.publicKey,
+          referee: bobReferee.publicKey,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([bobReferee])
+        .rpc();
+      expect.fail("Expected MilestoneAlreadyCompleted error was not thrown");
+    } catch (err: any) {
+      expect(err.error.errorCode.code).to.equal("MilestoneAlreadyCompleted");
+    }
+  });
+});

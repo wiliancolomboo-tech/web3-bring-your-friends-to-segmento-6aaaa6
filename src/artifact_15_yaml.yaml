@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  segmento-relayer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-referral-relayer
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+      - SOLANA_WS_URL=wss://api.mainnet-beta.solana.com
+      - PROGRAM_ID=SegmR11111111111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - FROM_EMAIL=referrals@segmento.io
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  segmento-viralmesh-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento_viralmesh_daemon
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+      - PROGRAM_ID=SegmX2Zf2wS9zXwYkXqJbK4g9gqP8L2hD5mJ9u9v8rQ
+      - ORACLE_KEYPAIR_PATH=/run/secrets/oracle_keypair.json
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+    volumes:
+      - ./oracle-keypair.json:/run/secrets/oracle_keypair.json:ro
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

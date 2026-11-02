@@ -1,0 +1,4 @@
+How it works under the hood:
+🔒 PDA DAG referral binding eliminates self-referrals and circular loops (A->B->A).
+⚡ Dynamic Quad-Tier Royalty Engine (5% -> 15%) settles instant SPL rewards via PDA Escrow.
+📡 Event-driven relayer pipes Solana logs to @resend & Discord/Slack webhooks in real-time.

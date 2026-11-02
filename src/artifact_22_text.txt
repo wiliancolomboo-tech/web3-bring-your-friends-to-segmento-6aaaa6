@@ -1,0 +1,5 @@
+Under the hood of the Segmento Referral Engine:
+⚡ Deterministic Anchor PDAs ensuring zero self-referrals & zero double-claims
+🔐 Automated vault-escrowed milestone payouts in native SOL & SPL tokens
+📡 Real-time enterprise dispatching into @resend, @SlackHQ & Discord
+🏎️ Sub-second settlement with zero RPC latency

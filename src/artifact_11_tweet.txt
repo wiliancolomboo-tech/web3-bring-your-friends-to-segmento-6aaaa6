@@ -1,0 +1,4 @@
+2/3 🛠 How it works under the SVM hood:
+• Deterministic PDA-based referral lineages eliminate messy off-chain UTM cookies.
+• Proof-of-Activity (PoA) gating prevents fake bot accounts from draining bounty pools.
+• Dual-tier split: 80% Referrers, 10% Friend cashback, 10% Protocol treasury! 🌐💎

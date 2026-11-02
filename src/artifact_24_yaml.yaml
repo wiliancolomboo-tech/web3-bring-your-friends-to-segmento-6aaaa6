@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  segmento-growth-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento_event_worker
+    restart: always
+    env_file:
+      - .env.production
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

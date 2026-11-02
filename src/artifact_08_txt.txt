@@ -1,0 +1,12 @@
+┌────────────────────────────────────────────────────────┬─────────┐
+│ Test Case Description                                  │ Status  │
+├────────────────────────────────────────────────────────┼─────────┤
+│ 1. Campaign Initialization with Segment Multipliers    │ PASS    │
+│ 2. Vault Token Funding & Liquidity Verification        │ PASS    │
+│ 3. Referrer Unique Registration (PDA collision checks) │ PASS    │
+│ 4. Single-Parent Referral with Tier 3 (Whale) Payout   │ PASS    │
+│ 5. Duplicate Referral Collision Rejection              │ PASS    │
+│ 6. Self-Referral Sybil Attack Prevention               │ PASS    │
+│ 7. Expired Attestation Signature Rejection             │ PASS    │
+│ 8. Referrer Dynamic Claim CPI Execution                │ PASS    │
+└────────────────────────────────────────────────────────┴─────────┘

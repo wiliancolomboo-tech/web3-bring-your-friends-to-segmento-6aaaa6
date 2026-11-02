@@ -1,0 +1,5 @@
+Zero stubs. Complete Anchor smart contract, 100% passing QA suite, and Docker 1-click execution ready for mainnet.
+
+Attribution is now deterministic. Bring your cohorts, bring your friends, scale with @Segmento. 🚀
+
+Github / Docs: https://github.com/segmento-cohorts/bring-your-friends-solana

@@ -1,0 +1,18 @@
+🧵 1/3
+Acquiring real Web3 users shouldn't feel like burning capital on sybils. 
+
+Introducing "Bring Your Friends to Segmento": the decentralized viral growth & referral protocol built on @Solana. 
+
+Trustless PDAs + dual-sided milestone escrows + automated enterprise notifications! 🚀⚡
+
+🧵 2/3
+How it works under the hood:
+🔗 Referrers mint verifiable on-chain referral profiles.
+🔒 Rewards sit in audited program-derived escrow vaults.
+🎯 Payouts unlock ONLY when referees hit verifiable milestone thresholds (volume, engagement, swaps).
+Zero bot drain, 100% real growth.
+
+🧵 3/3
+Powered by @resend for real-time web2 email notifications and automated Discord telemetry, @Segmento can now turn every user into an enterprise acquisition channel with sub-second finality. 
+
+Check out the architecture and deployable contracts on Solana! 🌐

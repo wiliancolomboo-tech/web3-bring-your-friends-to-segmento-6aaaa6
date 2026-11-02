@@ -1,0 +1,5 @@
+2/4 ⚡ What makes this 1st place architecture different:
+🔒 Ed25519-verified invite PDA nonces (Sybil-proof)
+💸 Direct 15% Tier-1 + 5% Tier-2 automatic lamport routing
+🛡️ Zero-reentrancy program vault escrows
+📬 Enterprise bridge via @resend for real-time invite delivery!

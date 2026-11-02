@@ -1,0 +1,9 @@
++-----------------------------------------------------------------------------------------+
+|                              OPERATIONAL RUNBOOK SUMMARY                                |
++-----------------------+-----------------------------------------------------------------+
+| Incident Scenario     | Resolution Procedure                                            |
++-----------------------+-----------------------------------------------------------------+
+| Low Escrow Balance    | Call `deposit_rewards` via Admin Keypair or multisig.           |
+| Anomaly / Exploit     | Invoke `toggle_pause` to halt all claims and registrations.    |
+| RPC Disconnection     | Docker automatic restart policy will reconnect back-off socket. |
++-----------------------+-----------------------------------------------------------------+

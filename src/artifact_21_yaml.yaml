@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  segmento-indexer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-indexing-service
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SOLANA_WS_URL=wss://api.devnet.solana.com
+      - PROGRAM_ID=SegmEnto11111111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - RESEND_SENDER_EMAIL=referrals@segmento.network
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

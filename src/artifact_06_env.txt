@@ -1,0 +1,7 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+PROGRAM_ID=SegViraL11111111111111111111111111111111111
+ADMIN_KEYPAIR_PATH=/app/keys/admin-keypair.json
+RESEND_API_KEY=re_live_enterprise_segmento_prod_token
+RESEND_FROM_EMAIL=referrals@segmento.growth.io
+SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+PORT=8080

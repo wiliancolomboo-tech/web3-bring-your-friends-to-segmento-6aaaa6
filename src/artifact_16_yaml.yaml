@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  segmento-daemon:
+    build:
+      context: ./services/segmento-agent
+      dockerfile: Dockerfile
+    container_name: segmento_viral_daemon
+    restart: always
+    environment:
+      - PORT=8080
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SOLANA_WS_URL=wss://api.devnet.solana.com
+      - PROGRAM_ID=SegmEntoReferraL111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - NOTIFICATION_EMAIL_FROM=referrals@updates.segmento.io
+      - NOTIFICATION_EMAIL_TO=alerts@segmento.io
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

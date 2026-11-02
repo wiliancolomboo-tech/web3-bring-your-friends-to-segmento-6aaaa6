@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  segmento-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-friends-indexer
+    restart: always
+    environment:
+      - PORT=3000
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-https://api.devnet.solana.com}
+      - SOLANA_WS_URL=${SOLANA_WS_URL:-wss://api.devnet.solana.com}
+      - PROGRAM_ID=${PROGRAM_ID:-SegmX11111111111111111111111111111111111111}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - ORACLE_PRIVATE_KEY=${ORACLE_PRIVATE_KEY}
+    ports:
+      - "3000:3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

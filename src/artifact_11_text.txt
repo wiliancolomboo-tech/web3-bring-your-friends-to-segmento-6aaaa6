@@ -1,0 +1,5 @@
+Customer acquisition in Web3 is broken: high CAC, bot-farmed referrals, and manual reward spreadsheets. 
+
+Introducing "Bring Your Friends to @Segmento" — a 100% on-chain, sybil-resistant viral growth & audience segmentation engine built on @Solana ⚡️
+
+Here is how we built it 🧵👇

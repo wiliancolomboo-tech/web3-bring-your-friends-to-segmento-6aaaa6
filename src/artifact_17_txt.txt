@@ -1,0 +1,3 @@
+Web3 referral funnels are broken: 70% of attribution is lost between Web2 cookies and phantom wallet connections, while Sybil bots drain reward pools. 
+
+We built "Bring Your Friends to @Segmento" — a 100% on-chain, verifiable cohort expansion engine on @solana. ⚡️🧵👇

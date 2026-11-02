@@ -1,0 +1,13 @@
+Endpoint: GET /healthz
+Response:
+{
+  "status": "healthy",
+  "programId": "SegmEnto11111111111111111111111111111111111",
+  "lastSlotProcessed": 312891044,
+  "wsConnection": "connected",
+  "uptimeSeconds": 86420
+}
+
+Incident Playbook:
+1. RPC Rate Limiting: If 429 occurs, switch SOLANA_RPC_HTTP and SOLANA_RPC_WS in docker-compose.yml to a dedicated Triton/Helius endpoint and run `docker-compose up -d`.
+2. Vault Underfunded: Check Campaign Vault balance via CLI: `solana balance <VAULT_PDA>`. Deposit funds using the `fund_vault` instruction.

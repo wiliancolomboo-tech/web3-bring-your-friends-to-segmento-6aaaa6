@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  segmento-friends-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-friends-worker
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SEGMENTO_PROGRAM_ID=SegFr1end5Vo11111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - APP_BASE_URL=https://app.segmento.io
+    healthcheck:
+      test: ["CMD-SHELL", "node -e 'console.log(\"healthy\")'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"

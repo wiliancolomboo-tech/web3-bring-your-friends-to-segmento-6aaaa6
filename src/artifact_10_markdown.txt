@@ -1,0 +1,16 @@
+1/3 🚀 Bringing your friends to Web3 shouldn't rely on broken links or centralized tracking.
+
+Introducing "Bring Your Friends to @Segmento" — a 100% on-chain, sybil-resistant referral & growth attribution engine built natively on @solana! ⚡️
+
+Here is how we built it 🧵👇
+
+2/3 🛠️ Engineered for scale:
+✅ Native Anchor PDA architecture securing reward escrow vaults
+✅ Real-time dual kickback splits settled atomically on-chain
+✅ Enterprise loop: @resend invitations & automated Discord ops webhooks
+✅ Zero sybil manipulation: strict Proof-of-Activation thresholds
+
+3/3 📦 Turnkey & open-source:
+From 1-click Docker deployment to complete test coverage, the protocol empowers Segmento users to scale viral loops with verifiable on-chain transparency.
+
+Check out the submission repository & demo live on Solana Devnet! 🌐🤝 #Solana #Segmento #Web3Growth

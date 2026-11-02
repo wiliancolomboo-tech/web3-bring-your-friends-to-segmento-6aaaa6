@@ -1,0 +1,32 @@
+sequenceDiagram
+    autonumber
+    actor Alice as Referrer (Alice)
+    actor Bob as Referee (Bob)
+    participant Program as Segmento Referral Program
+    participant Vault as Program Vault PDA
+    participant Worker as Segmento Enterprise Worker
+    participant Resend as Resend Email Service
+    participant Webhook as Growth Slack Channel
+
+    Alice->>Program: initialize_referrer(campaign_id, referral_code)
+    Program-->>Alice: ReferrerAccount PDA initialized
+
+    Bob->>Program: register_referral(referrer_pubkey, referral_code)
+    Program->>Program: Assert: Bob != Alice (No Self-Referral)
+    Program->>Program: Assert: Bob Has No Existing Binding PDA
+    Program-->>Bob: ReferralBinding PDA (State: Registered)
+    Program->>Worker: Emit: ReferralBoundEvent
+
+    Worker->>Webhook: Post Alert: "New User Registered via Ref Code"
+
+    Bob->>Program: qualify_referral(activity_proof_payload)
+    Note over Program: Program verifies milestone criteria<br/>(Min deposit/volume/valid authority)
+    Program->>Program: Update ReferralBinding (State: Qualified)
+    Program->>Vault: Release Referrer Commission & Referee Bonus
+    Vault-->>Alice: Transfer Referrer Reward (SPL/SOL)
+    Vault-->>Bob: Transfer Referee Welcome Bonus (SPL/SOL)
+    Program->>Worker: Emit: ReferralQualifiedEvent
+
+    Worker->>Resend: Send "Commission Earned" to Alice
+    Worker->>Resend: Send "Welcome Gift Unlocked" to Bob
+    Worker->>Webhook: Post Alert: "Conversion Success: Bob qualified via Alice"

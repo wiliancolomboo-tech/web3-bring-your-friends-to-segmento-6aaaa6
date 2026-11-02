@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  segmento-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-referral-engine
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL}
+      - PROGRAM_ID=${PROGRAM_ID}
+      - ADMIN_KEYPAIR_JSON=${ADMIN_KEYPAIR_JSON}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

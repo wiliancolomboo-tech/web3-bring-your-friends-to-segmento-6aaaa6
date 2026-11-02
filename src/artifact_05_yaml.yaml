@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  segmento-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+      - PROGRAM_ID=SegmENTokN9Q3jK21hA5CvyfR7p5x8GzWp3nU1vB4L9
+      - DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+      - RESEND_API_KEY=re_live_your_resend_api_key
+      - ADMIN_NOTIFICATION_EMAIL=telemetry@segmento.finance
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

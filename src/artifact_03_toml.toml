@@ -1,12 +1,12 @@
 [package]
-name = "segmento-referrals"
+name = "segmento-referral"
 version = "0.1.0"
-description = "Segmento Bring Your Friends Sybil-Resistant Referral Engine"
+description = "Production-grade on-chain referral and growth attribution engine for Segmento"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "segmento_referrals"
+name = "segmento_referral"
 
 [features]
 no-entrypoint = []
@@ -16,6 +16,5 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = { version = "0.29.0", features = ["init-if-needed"] }
-anchor-spl = { version = "0.29.0" }
-solana-program = "1.17.0"
+anchor-lang = { version = "0.30.1", features = ["init-if-needed"] }
+anchor-spl = { version = "0.30.1", features = ["token", "mint"] }

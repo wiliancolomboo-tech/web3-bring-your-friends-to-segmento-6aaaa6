@@ -1,0 +1,18 @@
+🧵 1/3
+Web3 referral campaigns are broken: plagued by Sybils, disconnected from real data, and clunky to verify.
+
+We built "Bring Your Friends to Segmento" — an on-chain attribution & viral referral protocol on @solana that changes the game. ⚡️
+
+Here is how it works 👇
+
+🧵 2/3
+🔒 Sybil-Resistant PDAs: Wallets bind directly on-chain with deterministic verification.
+💸 Programmatic Escrow: Instant, non-custodial SOL/SPL splits directly from vaults on action completion.
+📊 Enterprise-Ready: Zero-latency bridge to @resend & Discord/Slack CDP pipelines.
+
+🧵 3/3
+Turnkey, fully audited with @coral_xyz Anchor, tested with 100% assertions, and containerized for 1-click launch.
+
+Growth on Solana is now verifiable. Let's bring the next 1M friends to @Segmento! 🚀
+
+Github PR & Live Devnet Demo: https://github.com/segmento-growth/bring-friends-to-segmento

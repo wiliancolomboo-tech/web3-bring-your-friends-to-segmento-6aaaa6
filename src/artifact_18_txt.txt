@@ -1,0 +1,5 @@
+Under the hood:
+🔒 PDA-deterministic referral records eliminate tracking databases.
+🛡 Built-in Anti-Sybil locks block self-referrals & require activity thresholds.
+⚡️ Instant multi-tier SPL escrow payouts via Anchor CPI transfers.
+📧 Turnkey @resend + Discord notifications for seamless Web2-to-Web3 viral loops.

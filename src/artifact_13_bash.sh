@@ -1,0 +1,1 @@
+spl-token balance --address <VAULT_PDA>

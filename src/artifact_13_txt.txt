@@ -1,0 +1,9 @@
+Attribution in Web3 is broken: sybil bots drain affiliate pools while high-LTV advocates get ignored.
+
+We’re introducing the Segmento Referral & Attribution Protocol (SRAP) for @Segmento_io on @Solana!
+
+⚡ Cryptographic PDA trees
+🛡️ 100% On-chain Anti-Sybil
+💸 Instant SPL Payouts
+
+Here is how it works 👇 🧵 (1/3)

@@ -1,0 +1,27 @@
+{
+  "name": "segmento-viral-daemon",
+  "version": "1.0.0",
+  "description": "Enterprise event listener and invite dispatcher for Segmento Solana Referrals",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "send-invite": "node dist/cli.js send-invite",
+    "health": "curl -I http://localhost:8080/health"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.95.3",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "resend": "^4.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.4",
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,19 @@
+segmento-nexus/
+├── Anchor.toml
+├── Cargo.toml
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── programs/
+│   └── segmento-referrals/
+│       ├── Cargo.toml
+│       └── src/
+│           └── lib.rs
+├── services/
+│   └── segmento-relayer/
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── src/
+│           └── index.ts
+└── tests/
+    └── segmento-referrals.ts

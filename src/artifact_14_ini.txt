@@ -1,0 +1,8 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SEGMENTO_PROGRAM_ID=SegM1nt111111111111111111111111111111111111
+AUTHORITY_KEYPAIR_PATH=/root/.config/solana/id.json
+RESEND_API_KEY=re_123456789_enterpriseKey
+EMAIL_FROM=onboarding@segmento.network
+DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+PORT=8080
+LOG_LEVEL=info

@@ -1,0 +1,1 @@
+anchor init segmento_referrals --javascript false

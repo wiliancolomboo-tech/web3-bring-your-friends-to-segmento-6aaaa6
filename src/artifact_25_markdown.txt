@@ -1,0 +1,22 @@
+1/4 🚀 Bringing your friends to Web3 shouldn't rely on opaque spreadsheets or broken cookies.
+
+We built "Bring Your Friends to @Segmento" — an enterprise-grade, non-custodial referral & dynamic tier attribution protocol powered by @solana. 🌐⚡
+
+Here is how it works 🧵👇
+
+2/4 🛡️ Sybil-Resistant & Deterministic:
+Every referral is immutably anchored in Solana PDAs with real-time SPL/SOL escrow splits.
+📈 Dynamic Multipliers:
+• Bronze (1.0x)
+• Silver (1.2x at 5+ friends)
+• Gold VIP (1.5x at 20+ friends)
+Zero custody, zero delay. 💸
+
+3/4 🔌 Enterprise Automation Ready:
+Coupled with a resilient microservice integrating @resend for branded viral invite dispatch and instant Discord / Slack conversion war-room webhooks. 
+
+Scale your audience effortlessly with complete cryptographic attribution. 🤝✨
+
+4/4 Check out the open-source repo, testnet demo, and 1-click Docker deployment:
+👉 https://github.com/segmento-network/bring-your-friends-solana
+Built with ❤️ for @Segmento on @Solana. Let's onboard the next million users! 🚀

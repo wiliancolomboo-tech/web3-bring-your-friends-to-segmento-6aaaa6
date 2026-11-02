@@ -1,0 +1,13 @@
+1/3 🌐 Traditional Web3 referral programs fail because of wash-wallets and disconnected off-chain analytics. 
+
+Proud to introduce "Bring Your Friends to Segmento" — the first production-ready, Sybil-resistant on-chain referral & dynamic audience attribution engine on @solana! 🚀👇
+
+2/3 ⚡ Under the hood:
+• Atomic Anchor SPL Vault disbursals with 400ms Solana slot finality
+• Dynamic referral tiers with math-overflow protected basis point escalation
+• Zero-loss Omnichannel Event Bridge syncing directly to @resend, Slack & Discord
+• 100% deterministic PDA verification
+
+3/3 🤝 Turnkey, fully Dockerized, and architected for enterprise-scale dApps bringing millions of real users to the @Segmento_ ecosystem.
+
+Check out the verified contract, test suite & open-source repo here: https://github.com/segmento-growth/bring-your-friends #Solana #Web3Growth #Anchor

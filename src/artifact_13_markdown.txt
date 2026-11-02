@@ -1,0 +1,17 @@
+1/3 🚀 Sybil-ridden referral links are officially dead on Solana. 
+
+Introducing Bring Your Friends to @Segmento: the 1st segment-aware on-chain growth engine. 
+
+Instead of flat incentives, referrer payouts scale 1x -> 5x dynamically based on the verified on-chain tier of the referred user. 🧵👇
+
+2/3 🛠️ How it works under the hood:
+• Deterministic PDA attribution prevents duplicate referrals & sybil loops.
+• Off-chain attestation engine classifies referee activity (Trader, DeFi Power User, Whale).
+• Solana smart contract releases programmatic token escrow straight to wallets in <400ms.
+
+3/3 ⚡ Built for enterprise reliability:
+• 100% test assertion coverage.
+• Real-time ingestion daemon powering automated @resend onboarding & Slack alerts.
+• 1-click Docker deployment.
+
+Scaling high-conviction Web3 audiences natively on @solana. 🌐🔥

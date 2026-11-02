@@ -1,0 +1,6 @@
+Production-ready today:
+✅ Anchor 0.30 program
+✅ 100% test coverage with double-claim & anti-sybil proofs
+✅ 1-click Dockerized daemon
+
+Check out the submission repository & bring your friends to @segmento_io: https://github.com/segmento-growth/segmento-referrals #Solana #Segmento

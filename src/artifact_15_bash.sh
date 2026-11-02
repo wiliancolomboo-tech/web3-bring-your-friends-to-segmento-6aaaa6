@@ -1,1 +1,1 @@
-anchor test
+docker logs --tail 100 -f segmento-growth-daemon

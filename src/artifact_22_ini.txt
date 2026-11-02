@@ -1,0 +1,7 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+PROGRAM_ID=SegmXhD8V3K5YgZqV9iL72T4uFhE3f7dFqM6v5XpZNo
+ORACLE_KEYPAIR_PATH=/app/secrets/oracle-keypair.json
+RESEND_API_KEY=re_123456789abcdefSegmentoProduction
+RESEND_SENDER_EMAIL=referrals@segmento.network
+ENTERPRISE_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+PORT=3000

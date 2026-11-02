@@ -1,0 +1,5 @@
+Growth campaigns in Web3 are broken by wash referrals and 14-day manual spreadsheets.
+
+Introducing "Segmento Friends" — a production-grade, sybil-resistant on-chain referral & dynamic attribution protocol built natively on @solana for @Segmento.
+
+Real-time micro-settlements at 400ms finality. 🧵👇

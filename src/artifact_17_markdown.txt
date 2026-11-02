@@ -1,0 +1,12 @@
+1/3 🚀 Introducing "Bring Your Friends to Segmento" — the first high-velocity, anti-sybil viral growth & referral engine built natively on @solana. Sub-second atomic attribution meets automated audience segmentation. ⚡️
+
+2/3 🛠 Built with @anchorlang:
+- Non-custodial PDA state trees tracking real-time volume
+- Guaranteed sybil resistance via on-chain proof-of-action
+- Instant atomic reward splits: Referrer bonus + referee kickback
+- Full webhook sync with @resend & Slack for instant engagement
+
+3/3 🌐 Organic viral growth for Web3 should not rely on batch spreadsheets or off-chain trust. Segmento empowers communities to scale fearlessly on Solana. 
+
+Check out the full open-source repo & turnkey deployment stack below 👇
+#Solana #Web3Growth #Segmento #Bounty

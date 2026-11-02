@@ -1,10 +1,14 @@
-# Copy and configure environment variables
-cp .env.example .env
-# Edit .env with your Resend & Slack Webhook credentials
-nano .env
+# 1. Build and verify artifacts
+anchor build
 
-# Spin up daemon in background
-docker compose up -d --build
+# 2. Deploy Anchor Program to Solana Devnet
+solana config set --url https://api.devnet.solana.com
+solana airdrop 2
+anchor deploy --provider.cluster devnet
 
-# View real-time log ingestion
-docker compose logs -f
+# 3. Initialize Campaign via Anchor CLI
+npx ts-node client/src/cli.ts init-campaign \
+  --campaign-id 1 \
+  --referrer-bps 1000 \
+  --referee-bps 500 \
+  --base-reward 10000000

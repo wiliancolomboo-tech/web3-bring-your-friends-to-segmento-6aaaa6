@@ -1,0 +1,22 @@
+[toolchain]
+
+[features]
+seeds = true
+skip-lint = false
+
+[programs.localnet]
+segmento_referral = "SegmX2ZfT1fD186X7rL4hA2PqWq8p15bUqM5v4bZ9vR"
+
+[programs.devnet]
+segmento_referral = "SegmX2ZfT1fD186X7rL4hA2PqWq8p15bUqM5v4bZ9vR"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+start = "ts-node service/worker.ts"

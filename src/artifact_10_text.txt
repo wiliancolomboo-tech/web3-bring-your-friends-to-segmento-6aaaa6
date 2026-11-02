@@ -1,0 +1,5 @@
+3/4 🌐 Fully tested with 100% passing Anchor integration assertions, turnkey Docker containerization, and zero-downtime Slack telemetry.
+
+Ready for production on Day 1.
+
+Check the code & run the CLI here: github.com/segmento-solana/bring-your-friends-bounty 🛠️✨

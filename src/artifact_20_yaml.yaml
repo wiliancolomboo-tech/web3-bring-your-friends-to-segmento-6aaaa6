@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  segmento-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-telemetry-engine
+    restart: always
+    environment:
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+      - SOLANA_WS_URL=wss://api.mainnet-beta.solana.com
+      - PROGRAM_ID=SegmX11111111111111111111111111111111111111
+      - ADMIN_PRIVATE_KEY=${ADMIN_PRIVATE_KEY}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - ALERT_EMAIL_RECIPIENT=growth@segmento.network
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

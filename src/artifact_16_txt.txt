@@ -1,0 +1,8 @@
+Zero stubs. 100% production ready. Turnkey Docker stack with complete test coverage running on Solana Devnet.
+
+Bringing friends to Web3 should feel like magic, not friction.
+
+Built for the Segmento Hackathon 🏆
+Check the GitHub repo & live pipeline: https://github.com/segmento-growth/segmento-referral-core
+
+#Solana #Rust #Segmento #Web3Growth

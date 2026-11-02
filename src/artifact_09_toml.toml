@@ -1,0 +1,23 @@
+[toolchain]
+anchor_version = "0.30.1"
+solana_version = "1.18.26"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.devnet]
+segmento_referral = "SegmNT3X7zK9gQ5YcM4bS8jR1vW6eL2pA9tF4oU3mZ1"
+
+[programs.mainnet]
+segmento_referral = "SegmNT3X7zK9gQ5YcM4bS8jR1vW6eL2pA9tF4oU3mZ1"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run mocha -r ts-node/register 'tests/**/*.ts' --timeout 60000"

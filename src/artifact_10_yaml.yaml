@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  segmento-growth-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: segmento-agent
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SEGMENTO_PROGRAM_ID=SegmXyZ9oQGzK4rN1aWqT7uE3jVpB5mF8sC2dD6hA1B
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - ALERT_EMAIL_RECIPIENT=${ALERT_EMAIL_RECIPIENT}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

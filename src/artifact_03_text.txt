@@ -1,0 +1,12 @@
+programs/segmento_referral/
+├── Cargo.toml
+└── src/
+    ├── errors.rs
+    ├── events.rs
+    ├── instructions/
+    │   ├── claim_referral.rs
+    │   ├── initialize_campaign.rs
+    │   ├── mod.rs
+    │   └── register_referrer.rs
+    ├── lib.rs
+    └── state.rs

@@ -1,0 +1,21 @@
+🧵 1/3
+Acquiring real users on Web3 shouldn't mean funding Sybil bot rings. 
+
+Excited to unveil "Bring Your Friends to @Segmento" — a high-performance, non-custodial referral & cohort attribution protocol powered by @Solana. ⚡
+
+Deterministic PDAs. Dynamic Tier multi-hop rewards. Zero bot drain. 👇
+
+🧵 2/3
+Under the hood of Segmento Referrals:
+🛡️ Built-in Anti-Sybil staking and balance verification
+⚡ Sub-second reward settlement with Anchor PDAs
+📡 Direct Webhook & @resend Event Pipeline to Slack, Discord & CRM
+💸 Real-time fee splits (5% Bronze ➡️ 10% Silver ➡️ 20% Gold)
+
+🧵 3/3
+Complete test suite (100% assertions passing), modular Rust smart contracts, and a turnkey Docker microservice ready for mainnet deployment today!
+
+Check out our full open-source submission package & architecture runbook:
+github.com/segmento-protocol/bring-your-friends
+
+Let's onboard the next 10M friends to Solana! 🚀🌐 #Solana #Segmento #Bounty

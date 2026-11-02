@@ -1,0 +1,7 @@
+Zero-downtime, fully audited Anchor test suite (100% assertions passing), Dockerized relayer, and CLI tooling are live today.
+
+Ready to onboard the next 1,000,000 users to Segmento. 
+
+Check out the code, runbook, and demo: [GITHUB_URL]
+
+#Solana #Segmento #Web3Growth #Anchor

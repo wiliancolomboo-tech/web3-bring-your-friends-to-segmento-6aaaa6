@@ -1,0 +1,9 @@
++---------------------------------+----------------------------------------+----------------+
+| Test Case                       | Attack Vector / Edge Case Simulated    | Result Status  |
++---------------------------------+----------------------------------------+----------------+
+| Self-Referral Prevention        | User refers own secondary pubkey       | PASSED (Error) |
+| Double-Claim Guard              | Repeated calls to claim_and_qualify    | PASSED (Error) |
+| Escrow Drain Exhaustion         | Empty vault state with pending claims  | PASSED (Error) |
+| Cross-Campaign Isolation        | PDA collision across separate campaigns| PASSED (Safe)  |
+| Precision & Rounding Overflow   | Extreme u64 values near BOUNDS_MAX     | PASSED (Safe)  |
++---------------------------------+----------------------------------------+----------------+

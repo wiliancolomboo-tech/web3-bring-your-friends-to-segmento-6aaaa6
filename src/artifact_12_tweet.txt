@@ -1,0 +1,4 @@
+3/3 📦 Turnkey enterprise integration:
+Connected straight out of the box with @Resend for transactional emails & Discord audit webhooks via our sub-second event daemon.
+
+Open source. Production ready. Let's onboard the next million users to @Segmento! 🚢🔥
