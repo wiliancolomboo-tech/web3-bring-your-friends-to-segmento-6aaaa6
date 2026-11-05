@@ -19,7 +19,7 @@ const CONFIG: AppConfig = {
   solanaRpcUrl: process.env.SOLANA_RPC_URL || "https://api.devnet.solana.com",
   solanaWsUrl: process.env.SOLANA_WS_URL || "wss://api.devnet.solana.com",
   programId: process.env.PROGRAM_ID || "SegmXzBcxL4X6N3Zq7Q8m7Lq9uK8yT5W4vB3xM2j9Np",
-  resendApiKey: process.env.RESEND_API_KEY || "re_test_mock_token_123456789",
+  resendApiKey: process.env.RESEND_API_KEY || "re_test_000000000000000000000000",
   discordWebhookUrl: process.env.DISCORD_WEBHOOK_URL || "",
   fromEmail: process.env.FROM_EMAIL || "referrals@segmento.app",
   appBaseUrl: process.env.APP_BASE_URL || "https://segmento.app",

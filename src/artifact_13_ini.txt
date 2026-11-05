@@ -4,7 +4,7 @@ SOLANA_WSS_URL=wss://api.mainnet-beta.solana.com
 PROGRAM_ID=SegmXzT5j9pY8vK2Uo8V7G812W3sZ8hG8cM7Q3R9v4E
 
 # Enterprise Integration Credentials
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY=re_test_000000000000000000000000
 DISCORD_OR_SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
 SEGMENTO_CDP_INGEST_URL=https://api.segmento.io/v1/cohorts/track
 SEGMENTO_API_KEY=seg_live_998877665544332211

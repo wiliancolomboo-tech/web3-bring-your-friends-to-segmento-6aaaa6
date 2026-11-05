@@ -11,7 +11,7 @@ services:
       - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
       - PROGRAM_ID=SegmENTokN9Q3jK21hA5CvyfR7p5x8GzWp3nU1vB4L9
       - DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
-      - RESEND_API_KEY=re_live_your_resend_api_key
+      - RESEND_API_KEY=re_test_000000000000000000000000
       - ADMIN_NOTIFICATION_EMAIL=telemetry@segmento.finance
     ports:
       - "8080:8080"

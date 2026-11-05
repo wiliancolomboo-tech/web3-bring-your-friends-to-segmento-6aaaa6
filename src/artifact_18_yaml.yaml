@@ -14,7 +14,7 @@ services:
       - SOLANA_RPC_URL=https://api.devnet.solana.com
       - SOLANA_WS_URL=wss://api.devnet.solana.com
       - PROGRAM_ID=SegmXzB8q9WJtK3vY1qQn8g5mH3z8J2XqYn9g5mH3z8
-      - RESEND_API_KEY=re_123456789_abcdef
+      - RESEND_API_KEY=re_test_000000000000000000000000
       - NOTIFICATION_TARGET_EMAIL=ops@segmento.network
       - DISCORD_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
     logging:

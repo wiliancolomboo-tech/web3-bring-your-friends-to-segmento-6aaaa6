@@ -1,6 +1,6 @@
 SOLANA_RPC_URL=https://api.devnet.solana.com
 PROGRAM_ID=SegRfb3mS2p2VzV9kX7pD8C5k4R5M7F3Xv8B1aY9z2Q
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY=re_test_000000000000000000000000
 SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
 NOTIFICATION_EMAIL_FROM=Segmento Protocol <growth@segmento.io>
 PORT=8080

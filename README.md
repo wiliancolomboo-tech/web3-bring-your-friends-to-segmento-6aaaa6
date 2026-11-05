@@ -630,7 +630,7 @@ dotenv.config();
 
 const PROGRAM_ID = new PublicKey(process.env.SEGMENTO_PROGRAM_ID || "SegmXyZ9oQGzK4rN1aWqT7uE3jVpB5mF8sC2dD6hA1B");
 const RPC_URL = process.env.SOLANA_RPC_URL || "https://api.devnet.solana.com";
-const RESEND_API_KEY = process.env.RESEND_API_KEY || "re_test_mock_key";
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "re_test_000000000000000000000000";
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || "";
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || "";
 

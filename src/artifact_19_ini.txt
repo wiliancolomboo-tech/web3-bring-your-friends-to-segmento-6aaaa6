@@ -7,7 +7,7 @@ PROGRAM_ID=SegM111111111111111111111111111111111111111
 ADMIN_KEYPAIR_PATH=/etc/secrets/admin-keypair.json
 
 # Enterprise Integration Channels
-RESEND_API_KEY=re_123456789_enterprise_prod_segmento
+RESEND_API_KEY=re_test_000000000000000000000000
 INVITER_TARGET_EMAIL=growth-alerts@segmento.io
 NOTIFICATION_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
 
